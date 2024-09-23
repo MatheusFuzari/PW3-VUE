@@ -7,11 +7,22 @@ export const useWalletStore = defineStore('wallet', {
         mangeCoin: 3,
     }),
     getters: {
-        getCoins(): Wallet{
-            return {tetherCoin: this.tetherCoin, mangeCoin: this.mangeCoin }
+        getCoins(): Wallet {
+            return { tetherCoin: this.tetherCoin, mangeCoin: this.mangeCoin }
         }
     },
     actions: {
-
+        mangeToTether() {
+            if (this.mangeCoin >= 1) {
+                this.mangeCoin--;
+                this.tetherCoin += 2.5;
+            }
+        },
+        tetherToMange() {
+            if (this.tetherCoin >= 1) {
+                this.tetherCoin--;
+                this.mangeCoin += 0.4;
+            }
+        }
     }
 });
