@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { useWalletStore } from "@/stores/wallet";
-import { type Wallet } from "@/models/wallet";
+import { ref, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 
+
 const wallet = useWalletStore();
+const renderMetamask: Ref<boolean> = ref(false);
+
+const onComplete = (data: any) => {
+  console.log('data:', data);
+}
+
 </script>
 
 <template>
@@ -12,9 +19,8 @@ const wallet = useWalletStore();
       <p class="text-3xl font-bold">
         Mange <span class="text-[#F9403A]">Coin</span>
       </p>
-      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/">Play!</RouterLink>
       <RouterLink to="/token">Exchange</RouterLink>
-      <RouterLink to="/game">Play!</RouterLink>
       <div class="w-fit flex justify-around items-center gap-2 font-semibold text-xl">
         <img src="../assets/tetherCoin.png" class="w-12 h-12" />
         <p>Tether's:</p>

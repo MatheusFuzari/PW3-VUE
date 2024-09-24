@@ -9,6 +9,18 @@ export const useWalletStore = defineStore('wallet', {
     getters: {
         getCoins(): Wallet {
             return { tetherCoin: this.tetherCoin, mangeCoin: this.mangeCoin }
+        },
+        isEnoughMangeCoin: (wallet: Wallet) => (qnt: number): boolean => {
+            if (qnt <= wallet.mangeCoin) {
+                return true
+            }
+            return false;
+        },
+        isEnoughTetherCoin: (wallet: Wallet) => (qnt: number): boolean => {
+            if (qnt <= wallet.tetherCoin) {
+                return true
+            }
+            return false;
         }
     },
     actions: {
